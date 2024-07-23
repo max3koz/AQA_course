@@ -1,11 +1,20 @@
 # task 01 == Розділіть змінну alice_in_wonderland так, щоб вона займала декілька фізичних лінії
-# task 02 == Знайдіть та відобразіть всі символи одинарної лапки (') у тексті
+
 alice_in_wonderland = '"Would you tell me, please, which way I ought to go from here?"\n'\
                       '"That depends a good deal on where you want to get to," said the Cat.\n'\
                       '"I don\')t much care where ——" said Alice.\n'\
                       '"Then it doesn\'t matter which way you go," said the Cat.\n'\
                       '"—— so long as I get somewhere," Alice added as an explanation.\n'\
                       '"Oh, you\'re sure to do that," said the Cat, "if you only walk long enough."'
+
+# task 02 == Знайдіть та відобразіть всі символи одинарної лапки (') у тексті
+print("Task02.\n"
+      "Знайдіть та відобразіть всі символи одинарної лапки (') у тексті.")
+count = 0
+for symbol in alice_in_wonderland:
+    if symbol == "'":
+        count += 1
+        print(f"{count} символ \"'\"")
 
 # task 03 == Виведіть змінну alice_in_wonderland на друк
 print(f"\nTask03.\n{alice_in_wonderland}")
