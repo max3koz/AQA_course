@@ -24,14 +24,14 @@ rolling in wealth."""
 """ Дані у строці adwentures_of_tom_sawer розбиті випадковим чином, через помилку.
 треба замінити кінець абзацу на пробіл .replace("\n", " ")"""
 print("Task 01")
-adwentures_of_tom_sawer = adwentures_of_tom_sawer.replace("\n", " ")
-print(adwentures_of_tom_sawer)
+adwentures_of_tom_sawer_new = adwentures_of_tom_sawer.replace("\n", " ")
+print(adwentures_of_tom_sawer_new)
 
 # task 02 ==
 """ Замініть .... на пробіл
 """
 print("\nTask 02")
-adwentures_of_tom_sawer = adwentures_of_tom_sawer.replace("....", " ")
+adwentures_of_tom_sawer = adwentures_of_tom_sawer_new.replace("....", " ")
 print(adwentures_of_tom_sawer)
 
 # task 03 ==
@@ -45,7 +45,10 @@ print(adwentures_of_tom_sawer)
 """ Виведіть, скількі разів у тексті зустрічається літера "h"
 """
 print("\nTask 04")
-count = adwentures_of_tom_sawer.find("h")
+count = 0
+for letter in adwentures_of_tom_sawer:
+    if letter == "h":
+        count += 1
 print(f"There are {count} times the letter \"h\" in the sentence \"adwentures_of_tom_sawer\".")
 
 # task 05
@@ -85,7 +88,9 @@ print(adwentures_of_tom_sawer_sentences)
 Перетворіть рядок у нижній регістр.
 """
 print("\nTask 08")
-print(adwentures_of_tom_sawer_sentences[3].lower())
+print(adwentures_of_tom_sawer_sentences[3])
+for item in range(len(adwentures_of_tom_sawer_sentences)):
+    print(adwentures_of_tom_sawer_sentences[item].lower())
 
 # task 09
 """ Перевірте чи починається якесь речення з "By the time".
