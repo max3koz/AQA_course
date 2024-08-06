@@ -43,8 +43,11 @@ print(sum_of_2_nums(2, 3))
 print("\nTask03.\nНаписати функцію, яка розрахує середнє арифметичне списку чисел.")
 
 
-def middle_of_nums(nums_list: list) -> float:
-    return sum(nums_list)/len(nums_list)
+def middle_of_nums(nums_list: list):
+    if len(nums_list) != 0:
+        return sum(nums_list)/len(nums_list)
+    else:
+        return None
 
 
 print(middle_of_nums([1, 2, 3, 4, 5]))
@@ -54,7 +57,7 @@ print("\nTask04.\nНаписати функцію, яка приймає ряд�
 
 
 def revers_list(new_string: str) -> str:
-    return new_string[::-1]
+    return "".join(reversed(new_string))
 
 
 print(revers_list("Please revers this string!!!"))
