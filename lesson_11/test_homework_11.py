@@ -16,8 +16,8 @@ def logger_message_parser() -> str:
     return log_string
 
 def verify_status_and_log_level_values(log_level, status):
-    for item in [log_level, status]:
-        is_true = item in logger_message_parser()
+    for is_item_in_logger_message in [log_level, status]:
+        is_true = is_item_in_logger_message in logger_message_parser()
         assert_that(is_true).is_true()
 
 class TestLoggerEvent:
