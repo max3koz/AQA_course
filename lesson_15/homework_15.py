@@ -41,13 +41,13 @@ class TestSuite:
     def test_verify_that_all_rhombus_values_set(self):
         logging.info("")
         logging.info(f"Step 1: Set test suite data with valid value of rhombus")
-        side_value = 50
-        angle_value = 60
-        rhombus_1 = Rhombus(side_value, angle_value)
+        new_side_value = 50
+        new_angle_value = 60
+        rhombus_1: Rhombus = Rhombus(new_side_value, new_angle_value)
         logging.info(f"Step 2: Get the value of the rhombus side.")
-        assert_that(rhombus_1.side).is_equal_to(side_value)
+        assert_that(rhombus_1.get_side_value()).is_equal_to(new_side_value)
         logging.info(f"Step 3: Get the result of the rhombus angle a.")
-        assert_that(rhombus_1.angle_a).is_equal_to(angle_value)
+        assert_that(rhombus_1.get_angle_a()).is_equal_to(new_angle_value)
         logging.info(f"Step 4: Get the result of the rhombus angle b.")
-        assert_that(rhombus_1.angle_b).is_equal_to(180 - angle_value)
+        assert_that(rhombus_1.get_angle_b()).is_equal_to(180 - new_angle_value)
 
