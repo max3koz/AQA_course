@@ -19,10 +19,17 @@ class TestSuite:
         logging.info("Step 2: Create expected result data.")
         expected_result = {
             'name': 'Vasja',
-            'salary': 20_000,
+            'salary': 20000,
             'department': 'QA',
             'team_size': 6
         }
 
         logging.info("Step 3: Verify expected result data.")
-        assert_that(team_lead_developer.__dict__).is_equal_to(expected_result)
+        logging.info(f"Substep 3.1: Verify that \"name\" is {expected_result['name']}.")
+        assert_that(team_lead_developer.get_name()).is_equal_to(expected_result['name'])
+        logging.info(f"Substep 3.2: Verify that \"salary\" is {expected_result['salary']}.")
+        assert_that(team_lead_developer.get_salary()).is_equal_to(expected_result['salary'])
+        logging.info(f"Substep 3.3: Verify that \"department\" is {expected_result['department']}.")
+        assert_that(team_lead_developer.get_department()).is_equal_to(expected_result['department'])
+        logging.info(f"Substep 3.4: Verify that \"team_size\" is {expected_result['team_size']}.")
+        assert_that(team_lead_developer.get_team_size()).is_equal_to(expected_result['team_size'])
