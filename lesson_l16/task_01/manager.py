@@ -5,7 +5,7 @@ class Manager(Employee):
     __department: str
 
     def __init__(self, name, salary, department):
-        super().__init__(name, salary)
+        Employee.__init__(self, name, salary)
         self.__department = department
 
     def get_department(self):
