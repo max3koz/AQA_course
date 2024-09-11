@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 import sys, glob, csv, pytz, shutil
-from os import listdir, getcwd, access, W_OK
-from os.path import abspath, join, dirname, split, exists, isfile, isdir
+from os import access, W_OK
+from os.path import abspath, join, dirname, split
 
 sys.path.append("/randominfo/")
 from random import randint, choice, sample, randrange
@@ -19,7 +19,7 @@ full_path = lambda filename: abspath(join(dirname(__file__), filename))
 
 def get_id(length=6, seq_number=None, step=1, prefix=None, postfix=None):
     generated_id = ""
-    if seq_number == None:
+    if seq_number is None:
         for _ in range(length):
             generated_id += str(randint(0, 9))
     else:
@@ -27,50 +27,50 @@ def get_id(length=6, seq_number=None, step=1, prefix=None, postfix=None):
             raise TypeError("Sequence number must be an integer.")
         else:
             generated_id = str(seq_number + step)
-    if prefix != None:
+    if prefix is not None:
         prefix += generated_id
         generated_id = prefix
-    if postfix != None:
+    if postfix is not None:
         generated_id += postfix
     return generated_id
 
 
 def get_first_name(gender=None):
-    firstNameFile = csv.reader(open(full_path('data.csv'), 'r'))
-    filteredData = []
-    if gender == None:
-        for data in firstNameFile:
+    first_name_file = csv.reader(open(full_path('data.csv'), 'r'))
+    filtered_data = []
+    if gender is None:
+        for data in first_name_file:
             if data[0] != '':
-                filteredData.append(data)
+                filtered_data.append(data)
     else:
         if gender.lower() == "male":
-            for data in firstNameFile:
+            for data in first_name_file:
                 if data[0] != '':
-                    if (data[2] == "male"):
-                        filteredData.append(data)
+                    if data[2] == "male":
+                        filtered_data.append(data)
         elif gender.lower() == "female":
-            for data in firstNameFile:
+            for data in first_name_file:
                 if data[0] != '':
-                    if (data[2] == "female"):
-                        filteredData.append(data)
+                    if data[2] == "female":
+                        filtered_data.append(data)
         else:
             raise ValueError("Enter gender male or female.")
-    return choice(filteredData)[0]
+    return choice(filtered_data)[0]
 
 
 def get_last_name():
-    lastNameFile = csv.reader(open(full_path('data.csv'), 'r'))
-    filteredData = []
-    for data in lastNameFile:
+    last_name_file = csv.reader(open(full_path('data.csv'), 'r'))
+    filtered_data = []
+    for data in last_name_file:
         if data[1] != '':
-            filteredData.append(data[1])
-    return choice(filteredData)
+            filtered_data.append(data[1])
+    return choice(filtered_data)
 
 
 def get_gender(first_name):
-    firstNameFile = csv.reader(open(full_path('data.csv'), 'r'))
+    first_name_file = csv.reader(open(full_path('data.csv'), 'r'))
     gender = ""
-    for data in firstNameFile:
+    for data in first_name_file:
         if data[0] != '' and data[0] == first_name:
             gender = data[2]
             break
@@ -78,21 +78,21 @@ def get_gender(first_name):
 
 
 def get_country(first_name=None):
-    countryFile = csv.reader(open(full_path('data.csv'), 'r'))
+    country_file = csv.reader(open(full_path('data.csv'), 'r'))
     country = ""
-    if first_name != None:
-        for data in countryFile:
+    if first_name is not None:
+        for data in country_file:
             if data[0] != '' and data[0] == first_name:
                 country = data[3]
                 break
         if country == "":
             print("Specified user data is not available. Tip: Generate random country.")
     else:
-        filteredData = []
-        for data in countryFile:
+        filtered_data = []
+        for data in country_file:
             if data[12] != '':
-                filteredData.append(data[12])
-        country = choice(filteredData)
+                filtered_data.append(data[12])
+        country = choice(filtered_data)
     return country
 
 
@@ -101,19 +101,19 @@ def get_full_name(gender=None):
 
 
 def get_otp(length=6, digit=True, alpha=True, lowercase=True, uppercase=True):
-    lwrChars = "qwertyuioplkjhgfdsazxcvbnm"
-    uprChars = "QWERTYUIOPLKJHGFDSAZXCVBNM"
+    lwr_chars = "qwertyuioplkjhgfdsazxcvbnm"
+    upr_chars = "QWERTYUIOPLKJHGFDSAZXCVBNM"
     digs = "0123456789"
     chars = ""
     otp = ""
     if digit != False or alpha != False:
-        if digit == True:
+        if digit:
             chars += digs
-        if alpha == True:
-            if lowercase == True:
-                chars += lwrChars
-            if uppercase == True:
-                chars += uprChars
+        if alpha:
+            if lowercase:
+                chars += lwr_chars
+            if uppercase:
+                chars += upr_chars
         for _ in range(length):
             otp += str(chars[randint(0, len(chars) - 1)])
         return otp
@@ -121,8 +121,8 @@ def get_otp(length=6, digit=True, alpha=True, lowercase=True, uppercase=True):
         raise ValueError("From parameters 'digit' and 'alpha' anyone must be True.")
 
 
-def get_formatted_datetime(outFormat, strDate, strFormat="%d-%m-%Y %H:%M:%S"):
-    return datetime.strptime(strDate, strFormat).strftime(outFormat)
+def get_formatted_datetime(out_format, str_date, str_format="%d-%m-%Y %H:%M:%S"):
+    return datetime.strptime(str_date, str_format).strftime(out_format)
 
 
 def get_email(prsn=None):
@@ -131,7 +131,7 @@ def get_email(prsn=None):
     extentions = ['com', 'in', 'jp', 'us', 'uk', 'org', 'edu', 'au', 'de', 'co', 'me', 'biz', 'dev', 'ngo', 'site',
                   'xyz', 'zero', 'tech']
 
-    if prsn == None:
+    if prsn is None:
         prsn = Person()
 
     c = randint(0, 2)
@@ -152,12 +152,11 @@ def random_password(length=8, special_chars=True, digits=True):
     alpha = "QWERTYUIOPLKJHGFDSAZXCVBNMmnbvcxzasdfghjklpoiuytrewq"
     spec_char_len = dig_char_len = 0
     chars = ""
-    paswd = ""
-    if special_chars == True:
+    if special_chars:
         spec_char_len = randint(1, ceil(length / 4))
         for _ in range(spec_char_len):
             chars += choice(spec_chars)
-    if digits == True:
+    if digits:
         dig_char_len = randint(1, ceil(length / 3))
         for _ in range(dig_char_len):
             chars += str(randint(0, 9))
@@ -170,10 +169,10 @@ def random_password(length=8, special_chars=True, digits=True):
 
 def get_phone_number(country_code=True):
     phone = ""
-    if country_code == True:
-        cCodes = [91, 144, 141, 1, 44, 86, 52, 61, 32, 20, 33, 62, 81, 31, 7]
+    if country_code:
+        c_codes = [91, 144, 141, 1, 44, 86, 52, 61, 32, 20, 33, 62, 81, 31, 7]
         phone = "+"
-        phone += str(choice(cCodes))
+        phone += str(choice(c_codes))
         phone += " "
     for i in range(0, 10):
         if i == 0:
@@ -183,42 +182,42 @@ def get_phone_number(country_code=True):
     return phone
 
 
-def get_alphabetic_profile_img(char, filePath, imgName, charColor=None, bgColor=None):
+def get_alphabetic_profile_img(char, file_path, img_name, char_color=None, bg_color=None):
     chars = "qwertyuioplkjhgfdsazxcvbnmQAZXSWEDCVFRTGBNHYUJMKLIOP0123456789 ,.+=-_()[]{}"
-    if all((c in chars) for c in imgName):
-        if access(dirname(filePath), W_OK):
-            if charColor != None:
-                if not charColor.isalpha():
+    if all((c in chars) for c in img_name):
+        if access(dirname(file_path), W_OK):
+            if char_color is not None:
+                if not char_color.isalpha():
                     raise ValueError("Character color must be a name of color.")
-            if bgColor != None:
-                if not bgColor.isalpha():
+            if bg_color is not None:
+                if not bg_color.isalpha():
                     raise ValueError("Background color must be a name of color.")
             char = char[:1].upper()
-            if bgColor == None:
+            if bg_color is None:
                 colors = ['red', 'green', 'royalblue', 'violet', 'pink', 'indigo', 'grey', 'yellowgreen', 'teal']
-                bgColor = choice(colors)
-            if charColor == None:
-                charColor = (40, 40, 40)
-            img = Image.new('RGB', (512, 512), color=bgColor)
+                bg_color = choice(colors)
+            if char_color is None:
+                char_color = (40, 40, 40)
+            img = Image.new('RGB', (512, 512), color=bg_color)
             d = ImageDraw.Draw(img)
             font = ImageFont.truetype("Candara.ttf", 280)
-            d.text((170, 140), char, fill=charColor, font=font)
-            filePath = filePath + "\\" + str(imgName) + ".jpg"
-            img.save(filePath)
+            d.text((170, 140), char, fill=char_color, font=font)
+            file_path = file_path + "\\" + str(img_name) + ".jpg"
+            img.save(file_path)
         else:
             raise OSError("Invalid or insufficient privileges for specified file path.")
     else:
         raise OSError(
             "Invalid image name. Image name must contains characher including digits, alphabets, white space, dot, comma, ( ) [ ] { } _ + - =.")
-    return filePath
+    return file_path
 
 
-def get_face_profile_img(filePath, imgName, gender=None):
+def get_face_profile_img(file_path, img_name, gender=None):
     dir_name, file_name = split(abspath(__file__))
     chars = "qwertyuioplkjhgfdsazxcvbnmQAZXSWEDCVFRTGBNHYUJMKLIOP0123456789 ,.+=-_()[]{}"
-    if all((c in chars) for c in imgName):
-        if access(dirname(filePath), W_OK):
-            if gender == None:
+    if all((c in chars) for c in img_name):
+        if access(dirname(file_path), W_OK):
+            if gender is None:
                 orig_file = choice(glob.glob(dir_name + "\\images\\people\\*.jpg"))
             elif gender.lower() == "female":
                 orig_file = choice(glob.glob(dir_name + "\\images\\people\\female_*.jpg"))
@@ -226,7 +225,7 @@ def get_face_profile_img(filePath, imgName, gender=None):
                 orig_file = choice(glob.glob(dir_name + "\\images\\people\\male_*.jpg"))
             else:
                 return ValueError("Invalid gender. It must be male or female.")
-            return shutil.copy(orig_file, filePath + "\\" + str(imgName) + ".jpg")
+            return shutil.copy(orig_file, file_path + "\\" + str(img_name) + ".jpg")
         else:
             raise OSError("Invalid or insufficient privileges for specified file path.")
     else:
@@ -243,82 +242,82 @@ def get_today(_format="%d-%m-%Y %H:%M:%S"):
 
 
 def get_date(tstamp=None, _format="%d %b, %Y"):
-    if tstamp == None:
-        startTs = startRange.timestamp()
-        endTs = datetime.timestamp(endRange)
-        tstamp = randrange(int(startTs), int(endTs))
+    if tstamp is None:
+        start_ts = startRange.timestamp()
+        end_ts = datetime.timestamp(endRange)
+        tstamp = randrange(int(start_ts), int(end_ts))
     else:
         if type(tstamp).__name__ != 'int':
             raise ValueError("Timestamp must be an integer.")
     return datetime.utcfromtimestamp(tstamp).strftime(_format)
 
 
-def get_birthdate(startAge=None, endAge=None, _format="%d %b, %Y"):
-    startRange = datetime.today()
-    endRange = datetime(1970, 1, 1, 0, 0, 0, 0, pytz.UTC)
-    if startAge != None:
-        if type(startAge).__name__ != 'int':
+def get_birthdate(start_age=None, end_age=None, _format="%d %b, %Y"):
+    start_range = datetime.today()
+    end_range = datetime(1970, 1, 1, 0, 0, 0, 0, pytz.UTC)
+    if start_age is not None:
+        if type(start_age).__name__ != 'int':
             raise ValueError("Starting age value must be integer.")
-    if endAge != None:
-        if type(endAge).__name__ != 'int':
+    if end_age is not None:
+        if type(end_age).__name__ != 'int':
             raise ValueError("Ending age value must be integer.")
-    if startAge != None and endAge != None:  # If both are given in arg
-        if startAge >= endAge:
+    if start_age is not None and end_age is not None:  # If both are given in arg
+        if start_age >= end_age:
             raise ValueError("Starting age must be less than ending age.")
         else:
-            startRange = datetime(datetime.now().year - startAge, 12, 31, 23, 59, 59, 0, pytz.UTC)
-            endRange = datetime(datetime.now().year - endAge, 1, 1, 0, 0, 0, 0, pytz.UTC)
-    elif startAge != None or endAge != None:  # If anyone is given in arg
-        ageYear = startAge if startAge != None else endAge
-        startRange = datetime(datetime.now().year - ageYear, 12, 31, 23, 59, 59, 0, pytz.UTC)
-        endRange = datetime(datetime.now().year - ageYear, 1, 1, 0, 0, 0, 0, pytz.UTC)
+            start_range = datetime(datetime.now().year - start_age, 12, 31, 23, 59, 59, 0, pytz.UTC)
+            end_range = datetime(datetime.now().year - end_age, 1, 1, 0, 0, 0, 0, pytz.UTC)
+    elif start_age is not None or end_age is not None:  # If anyone is given in arg
+        age_year = start_age if start_age is not None else end_age
+        start_range = datetime(datetime.now().year - age_year, 12, 31, 23, 59, 59, 0, pytz.UTC)
+        end_range = datetime(datetime.now().year - age_year, 1, 1, 0, 0, 0, 0, pytz.UTC)
     else:
         pass
-    startTs = startRange.timestamp()
-    endTs = endRange.timestamp()
-    return datetime.fromtimestamp(randrange(int(endTs), int(startTs))).strftime(_format)
+    start_ts = start_range.timestamp()
+    end_ts = end_range.timestamp()
+    return datetime.fromtimestamp(randrange(int(end_ts), int(start_ts))).strftime(_format)
 
 
 def get_address():
     full_addr = []
-    addrParam = ['street', 'landmark', 'area', 'city', 'state', 'country', 'pincode']
+    addr_param = ['street', 'landmark', 'area', 'city', 'state', 'country', 'pincode']
     for i in range(4, 9):
-        addrFile = csv.reader(open(full_path('data.csv'), 'r'))
-        allAddrs = []
-        for addr in addrFile:
+        addr_file = csv.reader(open(full_path('data.csv'), 'r'))
+        all_addrs = []
+        for addr in addr_file:
             try:
                 if addr[i] != '':
-                    allAddrs.append(addr[i])
+                    all_addrs.append(addr[i])
             except:
                 pass
-        full_addr.append(choice(allAddrs))
-    full_addr = dict(zip(addrParam, full_addr))
+        full_addr.append(choice(all_addrs))
+    full_addr = dict(zip(addr_param, full_addr))
     return full_addr
 
 
 def get_hobbies():
-    hobbiesFile = csv.reader(open(full_path('data.csv'), 'r'))
-    allHobbies = []
-    for data in hobbiesFile:
+    hobbies_file = csv.reader(open(full_path('data.csv'), 'r'))
+    all_hobbies = []
+    for data in hobbies_file:
         if data[4] != '':
-            allHobbies.append(data[4])
+            all_hobbies.append(data[4])
     hobbies = []
     for _ in range(1, randint(2, 6)):
-        hobbies.append(choice(allHobbies))
+        hobbies.append(choice(all_hobbies))
     return hobbies
 
 
 class Person:
     def __init__(self, gender=None):
-        firstName = get_first_name(gender)
-        self.first_name = firstName
+        first_name = get_first_name(gender)
+        self.first_name = first_name
         self.last_name = get_last_name()
         self.full_name = self.first_name + " " + self.last_name
         self.birthdate = get_birthdate()
         self.phone = get_phone_number()
         self.email = get_email(self)
-        self.gender = get_gender(firstName)
-        self.country = get_country(firstName)
+        self.gender = get_gender(first_name)
+        self.country = get_country(first_name)
         self.paswd = random_password()
         self.hobbies = get_hobbies()
         self.address = get_address()
