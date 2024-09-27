@@ -1,0 +1,39 @@
+
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+  "formatters": {
+    "simple": {
+      "format": "%(levelname)s: %(message)s",
+      "datefmt": "%Y-%m-%dT%H:%M:%S"
+    },
+    "detailed": {
+      "format": "%(asctime)s : %(levelname)s : %(message)s",
+      "datefmt": "%Y-%m-%dT%H:%M:%S"
+    }
+  },
+  "handlers": {
+    "stderr": {
+      "class": "logging.StreamHandler",
+      "level": "INFO",
+      "formatter": "simple",
+      "stream": "ext://sys.stderr"
+    },
+    "file": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "INFO",
+      "formatter": "detailed",
+      "filename": "./hb_test.log",
+      "maxBytes": 10000,
+      "backupCount": 3
+    }
+  },
+  "root": {
+    "level": "DEBUG",
+    "handlers": [
+      "stderr",
+      "file"
+    ]
+  },
+  "loggers": {}
+}
