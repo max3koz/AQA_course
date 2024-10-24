@@ -1,0 +1,7 @@
+24-10-2024 21:08:47 - INFO - The testcase with empty data field for frame "frame2".
+24-10-2024 21:08:47 - INFO - Reconnect to frame "input2".
+24-10-2024 21:08:47 - INFO - Find text field, crear it and enter empty string to the field.
+24-10-2024 21:08:47 - INFO - Enter the button "Перевiрити"
+24-10-2024 21:08:48 - INFO - Waiting while the dialog window will be open
+24-10-2024 21:08:48 - INFO - Verify that the verification was done.
+24-10-2024 21:08:48 - INFO - Close the dialog window and go out from the frame
