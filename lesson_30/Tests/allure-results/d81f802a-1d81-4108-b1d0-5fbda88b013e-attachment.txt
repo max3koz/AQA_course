@@ -1,0 +1,7 @@
+INFO     root:test_suite_homework_30.py:55 The testcase with invalid data for frame "frame1".
+INFO     root:test_suite_homework_30.py:56 Reconnect to frame "input1".
+INFO     root:test_suite_homework_30.py:59 Find text field and enter invalid secret text "input1" to the field.
+INFO     root:test_suite_homework_30.py:64 Enter the button "Перевiрити"
+INFO     root:test_suite_homework_30.py:68 Waiting while the dialog window will be open
+INFO     root:test_suite_homework_30.py:71 Verify that the verification was done.
+INFO     root:test_suite_homework_30.py:77 Close the dialog window and go out from the frame

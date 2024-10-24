@@ -1,0 +1,7 @@
+24-10-2024 21:08:27 - INFO - The testcase with valid data for frame "frame1".
+24-10-2024 21:08:27 - INFO - Reconnect to frame "input1".
+24-10-2024 21:08:27 - INFO - Find text field and enter valid secret text "input1" to the field.
+24-10-2024 21:08:28 - INFO - Enter the button "Перевiрити"
+24-10-2024 21:08:29 - INFO - Waiting while the dialog window will be open
+24-10-2024 21:08:29 - INFO - Verify that the verification was done.
+24-10-2024 21:08:29 - INFO - Close the dialog window and go out from the frame

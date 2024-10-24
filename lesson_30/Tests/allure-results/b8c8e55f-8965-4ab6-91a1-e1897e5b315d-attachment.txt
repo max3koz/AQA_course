@@ -1,0 +1,7 @@
+INFO     root:test_suite_homework_30.py:86 The testcase with empty data field for frame "frame1".
+INFO     root:test_suite_homework_30.py:87 Reconnect to frame "input1".
+INFO     root:test_suite_homework_30.py:90 Find text field, crear it and enter empty string to the field.
+INFO     root:test_suite_homework_30.py:95 Enter the button "Перевiрити"
+INFO     root:test_suite_homework_30.py:99 Waiting while the dialog window will be open
+INFO     root:test_suite_homework_30.py:102 Verify that the verification was done.
+INFO     root:test_suite_homework_30.py:108 Close the dialog window and go out from the frame
