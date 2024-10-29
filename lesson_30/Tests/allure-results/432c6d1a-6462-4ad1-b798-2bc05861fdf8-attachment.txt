@@ -1,0 +1,7 @@
+INFO     root:test_suite_homework_30.py:24 The testcase with valid data for frame "frame1".
+INFO     root:test_suite_homework_30.py:25 Reconnect to frame "input1".
+INFO     root:test_suite_homework_30.py:28 Find text field and enter valid secret text "input1" to the field.
+INFO     root:test_suite_homework_30.py:33 Enter the button "Перевiрити"
+INFO     root:test_suite_homework_30.py:37 Waiting while the dialog window will be open
+INFO     root:test_suite_homework_30.py:40 Verify that the verification was done.
+INFO     root:test_suite_homework_30.py:46 Close the dialog window and go out from the frame
