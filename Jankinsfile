@@ -65,5 +65,11 @@ pipeline {
                 }
             }
         }
+
+        stage('Publish results') {
+            steps {
+                junit '**/test-reports/*.xml'
+            }
+        }
     }
 }
