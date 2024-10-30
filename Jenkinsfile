@@ -58,7 +58,7 @@ pipeline {
                         . \${VENV_DIR}/bin/activate
                         pip install --upgrade pip
                         pip install -r requirements.txt
-                        pytest --maxfail=1 --disable-warnings -q lesson_15/test_homework_l15.py
+                        pytest --junitxml=test-reports/results.xml --maxfail=1 --disable-warnings -q lesson_15/test_homework_l15.py
                     """
                 }
             }
@@ -66,7 +66,7 @@ pipeline {
 
         stage('Publish results') {
             steps {
-                junit '**/test-reports/*.xml'
+                junit 'test-reports/results.xml'
             }
         }
     }
