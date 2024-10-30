@@ -67,6 +67,14 @@ pipeline {
         stage('Publish results') {
             steps {
                 junit 'test-reports/results.xml'
+                emailext(
+                    to: 'max3koz@gmail.com',
+                    subject: "Jenkins Job: ${currentBuild.fullDisplayName}",
+                    body: """
+                        Jenkins Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) - ${currentBuild.result}
+                        See the results at: ${env.BUILD_URL}
+                    """
+                )
             }
         }
     }
