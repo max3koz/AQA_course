@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PYTHON_VERSION = '3.11.9'
+        PYTHON_VERSION = '3.10'
         VENV_DIR = 'venv'
     }
 
@@ -50,11 +50,11 @@ pipeline {
             }
         }
 
-        stage("execute test cases on the activated venv and installed dependencies.") {
+        stage("Execute test cases on the activated venv and installed dependencies.") {
             steps{
                 script {
                     sh """
-                        source ~/.bashrc
+                        #source ~/.bashrc
                         source ${VENV_DIR}/bin/activate
 
                         pip install --upgrade pip
