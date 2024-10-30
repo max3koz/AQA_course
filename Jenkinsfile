@@ -37,7 +37,7 @@ pipeline {
             steps{
                 script {
                     sh """
-                        #source ~/.bashrc
+                        . ~/.bashrc
 
                         if [ ! -d "\$(VENV_DIR) "]; then
                             echo "Create virtual environment"
@@ -54,8 +54,8 @@ pipeline {
             steps{
                 script {
                     sh """
-                        #source ~/.bashrc
-                        source ${VENV_DIR}/bin/activate
+                        . ~/.bashrc
+                        . ${VENV_DIR}/bin/activate
 
                         pip install --upgrade pip
                         pip install -r requirements.txt
