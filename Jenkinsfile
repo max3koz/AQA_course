@@ -37,7 +37,7 @@ pipeline {
             steps{
                 script {
                     sh """
-                        source ~/.bashrc
+                        #source ~/.bashrc
 
                         if [ ! -d "\$(VENV_DIR) "]; then
                             echo "Create virtual environment"
