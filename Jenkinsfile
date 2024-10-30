@@ -55,7 +55,7 @@ pipeline {
                         export PATH="\$HOME/.pyenv/bin:\$PATH"
                         eval "\$(pyenv init --path)"
                         eval "\$(pyenv init -)"
-                        source \${VENV_DIR}/bin/activate
+                        . \${VENV_DIR}/bin/activate
                         pip install --upgrade pip
                         pip install -r requirements.txt
                         pytest --maxfail=1 --disable-warnings -q lesson_30/Tests/test_suite_homework_30.py
