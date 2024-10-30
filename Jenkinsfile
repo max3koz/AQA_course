@@ -16,15 +16,12 @@ pipeline {
                         else
                             echo "Installing pyenv ..."
                             curl https://pyenv.run | bash
-
                             export PATH="\$HOME/.pyenv/bin:\$PATH"
                             eval "\$(pyenv init --path)"
                             eval "\$(pyenv init -)"
-
                             pyenv install ${PYTHON_VERSION}
                             pyenv global ${PYTHON_VERSION}
                         fi
-
                         export PATH="\$HOME/.pyenv/bin:\$PATH"
                         eval "\$(pyenv init --path)"
                         eval "\$(pyenv init -)"
@@ -40,9 +37,9 @@ pipeline {
                         export PATH="\$HOME/.pyenv/bin:\$PATH"
                         eval "\$(pyenv init --path)"
                         eval "\$(pyenv init -)"
-                        if [ ! -d "\$(VENV_DIR)" ]; then
+                        if [ ! -d "\${VENV_DIR}" ]; then
                             echo "Create virtual environment"
-                            python3 -m venv \$(VENV_DIR)
+                            python3 -m venv \${VENV_DIR}
                         else
                             echo "Virtual environment already exists!!!"
                         fi
