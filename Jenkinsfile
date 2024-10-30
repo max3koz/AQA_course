@@ -58,7 +58,7 @@ pipeline {
                         . \${VENV_DIR}/bin/activate
                         pip install --upgrade pip
                         pip install -r requirements.txt
-                        pytest --maxfail=1 --disable-warnings -q lesson_15/test_homework_15.py
+                        pytest --maxfail=1 --disable-warnings -q lesson_15/test_homework_l15.py
                     """
                 }
             }
