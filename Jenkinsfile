@@ -37,9 +37,10 @@ pipeline {
             steps{
                 script {
                     sh """
-                        . ~/.bashrc
-
-                        if [ ! -d "\$(VENV_DIR) "]; then
+                        export PATH="\$HOME/.pyenv/bin:\$PATH"
+                        eval "\$(pyenv init --path)"
+                        eval "\$(pyenv init -)"
+                        if [ ! -d "\$(VENV_DIR)" ]; then
                             echo "Create virtual environment"
                             python3 -m venv \$(VENV_DIR)
                         else
@@ -54,12 +55,12 @@ pipeline {
             steps{
                 script {
                     sh """
-                        . ~/.bashrc
-                        . ${VENV_DIR}/bin/activate
-
+                        export PATH="\$HOME/.pyenv/bin:\$PATH"
+                        eval "\$(pyenv init --path)"
+                        eval "\$(pyenv init -)"
+                        source \${VENV_DIR}/bin/activate
                         pip install --upgrade pip
                         pip install -r requirements.txt
-
                         pytest --maxfail=1 --disable-warnings -q lesson_30/Tests/test_suite_homework_30.py
                     """
                 }
